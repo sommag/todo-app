@@ -7,6 +7,7 @@ const filters = document.querySelectorAll('.filter');
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 let currentFilter = 'all';
 let dragSrcIndex = null;
+let sortByPriority = false;
 
 function saveTodos() {
   localStorage.setItem('todos', JSON.stringify(todos));
@@ -54,6 +55,13 @@ function renderTodos() {
     if (currentFilter === 'completed') return todo.completed;
     return true;
   });
+
+  if (sortByPriority) {
+    filtered.sort((a, b) => {
+      const priorityMap = { high: 3, medium: 2, low: 1 };
+      return priorityMap[b.priority] - priorityMap[a.priority];
+    });
+  }
 
   filtered.forEach((todo, index) => {
     const li = document.createElement('li');
@@ -125,6 +133,16 @@ function renderTodos() {
 
     list.appendChild(li);
   });
+
+  const sortBtn = document.getElementById('sort-toggle');
+  if (sortBtn) {
+    sortBtn.textContent = sortByPriority ? 'Sort: Priority 🔽' : 'Sort: Manual 🔀';
+  }
+}
+
+function toggleSortMode() {
+  sortByPriority = !sortByPriority;
+  renderTodos();
 }
 
 function addTodo() {
@@ -168,6 +186,14 @@ filters.forEach(button => {
 addButton.onclick = addTodo;
 input.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') addTodo();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sortButton = document.createElement('button');
+  sortButton.id = 'sort-toggle';
+  sortButton.textContent = 'Sort: Manual 🔀';
+  sortButton.onclick = toggleSortMode;
+  document.querySelector('.filters').appendChild(sortButton);
 });
 
 renderTodos();
