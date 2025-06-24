@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ToDo App</title>
+  <title>Starry ToDo List</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>La mia ToDo App</h1>
-  <input type="text" id="todoInput" placeholder="Aggiungi un'attività">
-  <button onclick="addTodo()">Aggiungi</button>
-  <ul id="todoList"></ul>
+  <div class="container">
+    <h1>ToDo List</h1>
+
+    <div class="input-section">
+      <input type="text" id="todo-input" placeholder="Add a new task">
+    </div>
+
+    <div class="priority-section">
+      <div class="priority-select-wrapper">
+        <select id="priority-select">
+          <option disabled selected>Priority</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+      <button id="add-button">Add</button>
+    </div>
+
+    <div class="filters">
+      <button data-filter="all" class="filter active">All</button>
+      <button data-filter="active" class="filter">Active</button>
+      <button data-filter="completed" class="filter">Completed</button>
+    </div>
+
+    <ul id="todo-list"></ul>
+  </div>
 
   <script src="script.js"></script>
 </body>
