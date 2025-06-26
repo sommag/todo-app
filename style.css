@@ -136,14 +136,19 @@ li.high::before {
   background-color: #e74c3c;
 }
 
-li.completed {
+li.completed span {
   text-decoration: line-through;
   opacity: 0.6;
 }
 
-li span {
-  flex: 1;
-  cursor: pointer;
+li.completed span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+li.completed button {
+  text-decoration: none;
+  opacity: 1;
 }
 
 li button {
@@ -159,6 +164,7 @@ li button {
 li button:hover {
   color: #ff6b6b;
 }
+
 
 .edit-input {
   flex: 1;
