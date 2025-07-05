@@ -188,29 +188,36 @@ li button:hover {
 }
 
 @media (max-width: 600px) {
+  body {
+    padding: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
   .container {
     padding: 20px;
+    margin-top: 20px;
+    box-shadow: none;
   }
 
   h1 {
-    font-size: 2em;
+    font-size: 1.8em;
+    text-align: center;
   }
 
-  .priority-section {
+  input, button, select {
+    font-size: 1em;
+  }
+
+  .input-section,
+  .priority-section,
+  .filters {
     flex-direction: column;
     gap: 10px;
     align-items: stretch;
   }
 
-  .priority-section button {
-    width: 100%;
-  }
-
-  .filters {
-    flex-direction: column;
-    gap: 8px;
-  }
-
+  .priority-section button,
   .filters button,
   #sort-toggle {
     width: 100%;
@@ -226,13 +233,10 @@ li button:hover {
     font-size: 1em;
   }
 
-  .edit-input {
-    width: 100%;
-    margin-bottom: 5px;
-  }
-
+  .edit-input,
   .edit-select {
     width: 100%;
+    margin-bottom: 5px;
   }
 }
 
